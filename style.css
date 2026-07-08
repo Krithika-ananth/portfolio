@@ -1,0 +1,598 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f5f7fa;
+    transition:0.5s;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 80px;
+    background:white;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+}
+
+nav a:hover{
+    color:#021960;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+}
+
+/* ================= THEME BUTTON ================= */
+
+#theme-toggle{
+    border:none;
+    background:none;
+    font-size:22px;
+    cursor:pointer;
+    color:#021960;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    position:relative;
+    height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:150px;
+    padding:80px;
+}
+
+.hero-bottom{
+    position:absolute;
+    bottom:10px;
+    left:80px;
+}
+
+.hero-text h1{
+    font-size:55px;
+    color:#222;
+}
+
+.hero-text span{
+    background:linear-gradient(
+        135deg,
+        #0b1d51,
+        #071336,
+        #020617,
+        #000000
+    );
+
+    background-clip:text;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    font-family:'Allura', cursive;
+    font-size:70px;
+}
+
+.hero-text h2{
+    margin-top:10px;
+    font-size:32px;
+    color:#444;
+}
+
+.tagline{
+    font-family:'Playfair Display', serif;
+}
+
+/* BUTTONS */
+
+.buttons{
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 25px;
+    margin-right:15px;
+
+    background:linear-gradient(
+        135deg,
+        #0b1d51,
+        #071336,
+        #020617
+    );
+
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:linear-gradient(to right, #E0F7FA, #B2EBF2);
+    color:black;
+}
+
+/* SOCIAL ICONS */
+
+.social-icons{
+    margin-top:25px;
+}
+
+.social-icons a{
+    font-size:28px;
+    margin-right:20px;
+    color:#333;
+    transition:0.3s;
+}
+
+.social-icons a:hover{
+    color:#021960;
+    transform:scale(1.2);
+}
+
+/* HERO IMAGE */
+
+.hero-image img{
+    width:350px;
+    height:350px;
+    object-fit:cover;
+    border-radius:50%;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* ================= SECTION ================= */
+
+section{
+    padding:100px 80px;
+}
+
+.section-title{
+    text-align:center;
+    font-size:40px;
+    margin-bottom:60px;
+    color:#021960;
+}
+
+/* ================= ABOUT ================= */
+
+.about-section{
+    background:#f9f9ff;
+}
+
+.about-container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+}
+
+.about-text{
+    flex:1;
+    font-size:17px;
+    line-height:1.9;
+    color:#333;
+}
+
+.about-text h2{
+    font-size:40px;
+    margin-bottom:20px;
+    color:#021960;
+}
+
+.about-closing{
+    margin-top:20px;
+    font-weight:600;
+    color:#021960;
+}
+
+.about-image{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.about-image img{
+    width:350px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* ================= PROJECTS ================= */
+
+.projects-section{
+    text-align:center;
+}
+
+.mindmap{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:80px;
+}
+
+.project-node{
+    text-decoration:none;
+    color:#333;
+    transition:0.3s;
+}
+
+.project-node img{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    object-fit:cover;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.project-node p{
+    margin-top:12px;
+    font-weight:600;
+}
+
+.project-node:hover{
+    transform:scale(1.1);
+}
+
+/* ================= ACHIEVEMENTS ================= */
+
+.achievements-section{
+    background:linear-gradient(135deg,#F3E8FF,#E9D5FF);
+}
+
+/* YEAR BLOCK */
+
+.year-block{
+    margin-bottom:70px;
+}
+
+.year-block h3{
+    display:inline-block;
+    background:#021960;
+    color:white;
+    padding:8px 18px;
+    border-radius:20px;
+    margin-bottom:30px;
+}
+
+/* SLIDER */
+
+.slider{
+    width:90%;
+    margin:auto;
+    overflow:hidden;
+}
+
+.slides{
+    display:flex;
+    gap:20px;
+    width:max-content;
+    animation:scroll 40s linear infinite;
+}
+
+.slides img{
+    width:300px;
+    height:auto;
+    object-fit:contain;
+
+    background:white;
+    padding:10px;
+    border-radius:10px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* HOVER PAUSE */
+
+.slider:hover .slides{
+    animation-play-state:paused;
+}
+
+/* ANIMATION */
+
+@keyframes scroll{
+
+    0%{
+        transform:translateX(0);
+    }
+
+    100%{
+        transform:translateX(-50%);
+    }
+}
+
+/* ================= DARK THEME ================= */
+
+.dark-theme{
+    background:#050505;
+    color:#f5d27a;
+}
+
+/* NAVBAR */
+
+.dark-theme nav{
+    background:#0d0d0d;
+    box-shadow:0 2px 10px rgba(255,215,0,0.1);
+}
+
+.dark-theme nav a{
+    color:#f5d27a;
+}
+
+.dark-theme nav a:hover{
+    color:#FFD700;
+}
+
+.dark-theme .logo{
+    color:#FFD700;
+}
+
+/* HERO */
+
+.dark-theme .hero-text h1,
+.dark-theme .hero-text h2{
+    color:#f5e6b3;
+}
+
+.dark-theme .hero-text span{
+    background:linear-gradient(
+        135deg,
+        #FFD700,
+        #E6C200,
+        #B8860B,
+        #FFF5CC
+    );
+
+    background-clip:text;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* BUTTONS */
+
+.dark-theme .btn{
+    background:linear-gradient(
+        135deg,
+        #FFD700,
+        #C9A227,
+        #8B7500
+    );
+
+    color:black;
+    font-weight:600;
+}
+
+.dark-theme .btn:hover{
+    background:#fff4c2;
+}
+
+/* SOCIAL ICONS */
+
+.dark-theme .social-icons a{
+    color:#FFD700;
+}
+
+/* ABOUT */
+
+.dark-theme .about-section{
+    background:#0a0a0a;
+}
+
+.dark-theme .about-text{
+    color:white;
+}
+
+.dark-theme .about-text h2{
+    color:#FFD700;
+}
+
+/* PROJECTS */
+
+.dark-theme .projects-section{
+    background:#050505;
+}
+
+.dark-theme .project-node p{
+    color:#f5d27a;
+}
+
+.dark-theme .project-node img{
+    box-shadow:0 0 20px rgba(255,215,0,0.3);
+}
+
+/* ACHIEVEMENTS */
+
+.dark-theme .achievements-section{
+    background:#080808;
+}
+
+.dark-theme .year-block h3{
+    background:#FFD700;
+    color:black;
+}
+
+.dark-theme .slides img{
+    background:#111;
+    border:1px solid #FFD700;
+    box-shadow:0 0 20px rgba(255,215,0,0.2);
+}
+
+/* TITLES */
+
+.dark-theme .section-title{
+    color:#FFD700;
+}
+
+.dark-theme #theme-toggle{
+    color:#FFD700;
+}
+
+.dark-theme .hero-image img,
+.dark-theme .about-image img{
+    box-shadow:0 0 30px rgba(255,215,0,0.3);
+}
+
+/* ================= EDUCATION ROADMAP ================= */
+
+.education-section{
+    padding:100px 50px;
+    text-align:center;
+}
+
+/* ROADMAP */
+
+.roadmap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+    margin-top:60px;
+}
+
+/* ROAD ITEM */
+
+.road-item{
+    width:280px;
+    background:white;
+    padding:25px;
+    border-radius:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,0.1);
+
+    transition:0.4s;
+}
+
+.road-item:hover{
+    transform:translateY(-10px);
+}
+
+/* IMAGES */
+
+.road-image img{
+    width:120px;
+    height:120px;
+
+    object-fit:cover;
+    border-radius:50%;
+
+    border:5px solid #021960;
+
+    margin-bottom:20px;
+}
+
+/* TEXT */
+
+.road-item h3{
+    color:#021960;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.road-item p{
+    color:#555;
+    line-height:1.7;
+    font-size:15px;
+}
+
+.road-item span{
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+    color:#021960;
+}
+
+/* ROAD LINE */
+
+.road-line{
+    width:100px;
+    height:6px;
+
+    background:linear-gradient(
+        to right,
+        #021960,
+        #5A7FFF
+    );
+
+    border-radius:20px;
+
+    position:relative;
+}
+
+/* ROAD DOT */
+
+.road-line::after{
+    content:'➜';
+
+    position:absolute;
+    top:-18px;
+    right:-10px;
+
+    font-size:30px;
+    color:#021960;
+}
+
+/* ================= DARK THEME ================= */
+
+.dark-theme .road-item{
+    background:#111;
+
+    border:1px solid rgba(255,215,0,0.2);
+
+    box-shadow:0 0 20px rgba(255,215,0,0.1);
+}
+
+.dark-theme .road-item h3{
+    color:#FFD700;
+}
+
+.dark-theme .road-item p{
+    color:#f5e6b3;
+}
+
+.dark-theme .road-item span{
+    color:#FFD700;
+}
+
+.dark-theme .road-image img{
+    border:5px solid #FFD700;
+
+    box-shadow:0 0 20px rgba(255,215,0,0.3);
+}
+
+.dark-theme .road-line{
+    background:linear-gradient(
+        to right,
+        #FFD700,
+        #FFF5CC
+    );
+}
+
+.dark-theme .road-line::after{
+    color:#FFD700;
+}
