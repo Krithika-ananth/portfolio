@@ -457,6 +457,245 @@ section{
     box-shadow:0 0 30px rgba(255,215,0,0.3);
 }
 
+/* ================= CONTACT ================= */
+
+#contact{
+    text-align:center;
+}
+
+#contact > p{
+    max-width:500px;
+    margin:0 auto 50px;
+    color:#555;
+    font-size:16px;
+    line-height:1.7;
+}
+
+.contact-links{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+}
+
+.contact-card{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:18px 28px;
+    background:white;
+    border-radius:50px;
+
+    text-decoration:none;
+    color:#333;
+    font-weight:600;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    transition:0.35s;
+    overflow:hidden;
+}
+
+.contact-card i{
+    font-size:20px;
+    color:#021960;
+    transition:0.35s;
+}
+
+.contact-card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg,#0b1d51,#020617);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:0.35s;
+    z-index:0;
+}
+
+.contact-card span,
+.contact-card i,
+.contact-card .copy-btn{
+    position:relative;
+    z-index:1;
+}
+
+.contact-card:hover{
+    color:white;
+    transform:translateY(-6px);
+    box-shadow:0 15px 30px rgba(2,25,96,0.3);
+}
+
+.contact-card:hover::before{
+    transform:scaleX(1);
+}
+
+.contact-card:hover i{
+    color:#fff5cc;
+    transform:rotate(-8deg) scale(1.15);
+}
+
+/* COPY BUTTON (email card only) */
+
+.copy-btn{
+    border:none;
+    background:rgba(2,25,96,0.08);
+    color:#021960;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    transition:0.3s;
+}
+
+.contact-card:hover .copy-btn{
+    background:rgba(255,255,255,0.15);
+    color:white;
+}
+
+.copy-btn:hover{
+    transform:scale(1.2);
+}
+
+.copy-tooltip{
+    position:absolute;
+    top:-38px;
+    right:10px;
+    background:#021960;
+    color:white;
+    padding:5px 12px;
+    border-radius:8px;
+    font-size:12px;
+    font-weight:500;
+
+    opacity:0;
+    pointer-events:none;
+    transform:translateY(5px);
+    transition:0.3s;
+    z-index:2;
+}
+
+.copy-tooltip.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* DARK THEME */
+
+.dark-theme #contact > p{
+    color:#f5e6b3;
+}
+
+.dark-theme .contact-card{
+    background:#111;
+    color:#f5d27a;
+    border:1px solid rgba(255,215,0,0.2);
+    box-shadow:0 0 20px rgba(255,215,0,0.1);
+}
+
+.dark-theme .contact-card i{
+    color:#FFD700;
+}
+
+.dark-theme .contact-card::before{
+    background:linear-gradient(135deg,#FFD700,#8B7500);
+}
+
+.dark-theme .contact-card:hover{
+    color:black;
+}
+
+.dark-theme .contact-card:hover i{
+    color:black;
+}
+
+.dark-theme .copy-btn{
+    background:rgba(255,215,0,0.12);
+    color:#FFD700;
+}
+
+.dark-theme .contact-card:hover .copy-btn{
+    background:rgba(0,0,0,0.2);
+    color:black;
+}
+
+.dark-theme .copy-tooltip{
+    background:#FFD700;
+    color:black;
+}
+
+/* ================= SKILLS ================= */
+
+#skills{
+    text-align:center;
+}
+
+.skills-grid{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+    margin-top:20px;
+}
+
+.skill-card{
+    width:220px;
+    background:white;
+    padding:30px 20px;
+    border-radius:20px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,0.1);
+
+    transition:0.4s;
+}
+
+.skill-card:hover{
+    transform:translateY(-10px);
+}
+
+.skill-icon{
+    font-size:32px;
+    color:#021960;
+    margin-bottom:15px;
+}
+
+.skill-card h3{
+    color:#021960;
+    margin-bottom:10px;
+    font-size:18px;
+}
+
+.skill-card p{
+    color:#555;
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* DARK THEME */
+
+.dark-theme .skill-card{
+    background:#111;
+    border:1px solid rgba(255,215,0,0.2);
+    box-shadow:0 0 20px rgba(255,215,0,0.1);
+}
+
+.dark-theme .skill-icon{
+    color:#FFD700;
+}
+
+.dark-theme .skill-card h3{
+    color:#FFD700;
+}
+
+.dark-theme .skill-card p{
+    color:#f5e6b3;
+}
+
 /* ================= EDUCATION ROADMAP ================= */
 
 .education-section{
