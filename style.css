@@ -82,7 +82,7 @@ nav a:hover{
     color:#222;
 }
 
-.hero-text span{
+.hero-text .highlight-name{
     background:linear-gradient(
         135deg,
         #0b1d51,
@@ -116,26 +116,68 @@ nav a:hover{
 }
 
 .btn{
-    display:inline-block;
-    padding:12px 25px;
-    margin-right:15px;
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
 
-    background:linear-gradient(
-        135deg,
-        #0b1d51,
-        #071336,
-        #020617
-    );
+    padding:10px 20px;
+    margin-right:12px;
 
-    color:white;
-    border-radius:8px;
+    background:white;
+    color:#333;
+    font-family:'Segoe UI', sans-serif;
+    font-weight:600;
+    font-size:14px;
+
+    border-radius:50px;
     text-decoration:none;
-    transition:0.3s;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    transition:0.35s;
+    overflow:hidden;
+}
+
+.btn i{
+    font-size:14px;
+    color:#021960;
+    transition:0.35s;
+}
+
+.btn span{
+    position:relative;
+    z-index:1;
+}
+
+.btn::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg,#0b1d51,#020617);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:0.35s;
+    z-index:0;
+}
+
+.btn i{
+    position:relative;
+    z-index:1;
 }
 
 .btn:hover{
-    background:linear-gradient(to right, #E0F7FA, #B2EBF2);
-    color:black;
+    color:white;
+    transform:translateY(-6px);
+    box-shadow:0 15px 30px rgba(2,25,96,0.3);
+}
+
+.btn:hover::before{
+    transform:scaleX(1);
+}
+
+.btn:hover i{
+    color:#fff5cc;
+    transform:rotate(-8deg) scale(1.15);
 }
 
 /* SOCIAL ICONS */
@@ -359,7 +401,7 @@ section{
     color:#f5e6b3;
 }
 
-.dark-theme .hero-text span{
+.dark-theme .hero-text .highlight-name{
     background:linear-gradient(
         135deg,
         #FFD700,
@@ -376,19 +418,26 @@ section{
 /* BUTTONS */
 
 .dark-theme .btn{
-    background:linear-gradient(
-        135deg,
-        #FFD700,
-        #C9A227,
-        #8B7500
-    );
+    background:#111;
+    color:#f5d27a;
+    border:1px solid rgba(255,215,0,0.2);
+    box-shadow:0 0 20px rgba(255,215,0,0.1);
+}
 
-    color:black;
-    font-weight:600;
+.dark-theme .btn i{
+    color:#FFD700;
+}
+
+.dark-theme .btn::before{
+    background:linear-gradient(135deg,#FFD700,#8B7500);
 }
 
 .dark-theme .btn:hover{
-    background:#fff4c2;
+    color:black;
+}
+
+.dark-theme .btn:hover i{
+    color:black;
 }
 
 /* SOCIAL ICONS */
@@ -635,65 +684,162 @@ section{
     text-align:center;
 }
 
-.skills-grid{
+.skills-block{
     display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:30px;
-    margin-top:20px;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+    max-width:1100px;
+    margin:50px auto 0;
+    text-align:left;
 }
 
-.skill-card{
-    width:220px;
-    background:white;
-    padding:30px 20px;
-    border-radius:20px;
-
-    box-shadow:0 8px 25px rgba(0,0,0,0.1);
-
-    transition:0.4s;
+.skills-block.reverse{
+    flex-direction:row-reverse;
 }
 
-.skill-card:hover{
-    transform:translateY(-10px);
+.skills-text{
+    flex:1.3;
 }
 
-.skill-icon{
-    font-size:32px;
+.skills-subtitle{
+    font-size:26px;
     color:#021960;
-    margin-bottom:15px;
+    margin-bottom:12px;
 }
 
-.skill-card h3{
-    color:#021960;
-    margin-bottom:10px;
-    font-size:18px;
-}
-
-.skill-card p{
+.skills-desc{
     color:#555;
+    font-size:15px;
+    line-height:1.7;
+    margin-bottom:30px;
+    max-width:480px;
+}
+
+.skill-bar{
+    margin-bottom:20px;
+}
+
+.skill-bar-label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:8px;
+}
+
+.skill-bar-icon{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:rgba(2,25,96,0.08);
+    color:#021960;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     font-size:14px;
-    line-height:1.6;
+    flex-shrink:0;
+}
+
+.skill-bar-icon.letter-icon{
+    font-weight:700;
+    border:2px solid #021960;
+    background:transparent;
+}
+
+.skill-bar-name{
+    font-weight:600;
+    color:#222;
+    font-size:15px;
+}
+
+.bar-track{
+    width:100%;
+    height:8px;
+    background:#e6e9f2;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.bar-fill{
+    height:100%;
+    border-radius:10px;
+    background:linear-gradient(90deg,#0b1d51,#3a5bd9);
+
+    transform:scaleX(0);
+    transform-origin:left;
+    animation:growBar 1.4s ease-out forwards;
+}
+
+@keyframes growBar{
+    from{ transform:scaleX(0); }
+    to{ transform:scaleX(1); }
+}
+
+.skills-visual{
+    flex:1;
+    aspect-ratio:1/1;
+    max-width:280px;
+
+    background:linear-gradient(135deg,#0b1d51,#071336,#020617);
+    border-radius:30px;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    place-items:center;
+    gap:20px;
+    padding:30px;
+
+    box-shadow:0 15px 35px rgba(2,25,96,0.25);
+}
+
+.skills-visual i{
+    font-size:40px;
+    color:#fff5cc;
+}
+
+.skills-visual i:nth-child(5){
+    grid-column:span 2;
 }
 
 /* DARK THEME */
 
-.dark-theme .skill-card{
-    background:#111;
-    border:1px solid rgba(255,215,0,0.2);
-    box-shadow:0 0 20px rgba(255,215,0,0.1);
-}
-
-.dark-theme .skill-icon{
+.dark-theme .skills-subtitle{
     color:#FFD700;
 }
 
-.dark-theme .skill-card h3{
-    color:#FFD700;
-}
-
-.dark-theme .skill-card p{
+.dark-theme .skills-desc{
     color:#f5e6b3;
+}
+
+.dark-theme .skill-bar-name{
+    color:#f5e6b3;
+}
+
+.dark-theme .skill-bar-icon{
+    background:rgba(255,215,0,0.12);
+    color:#FFD700;
+}
+
+.dark-theme .skill-bar-icon.letter-icon{
+    border-color:#FFD700;
+}
+
+.dark-theme .bar-track{
+    background:#222;
+}
+
+.dark-theme .bar-fill{
+    background:linear-gradient(90deg,#FFD700,#8B7500);
+}
+
+.dark-theme .skills-visual{
+    background:linear-gradient(135deg,#1a1a1a,#000);
+    border:1px solid rgba(255,215,0,0.2);
+    box-shadow:0 0 25px rgba(255,215,0,0.15);
+}
+
+.dark-theme .skills-visual i{
+    color:#FFD700;
 }
 
 /* ================= EDUCATION ROADMAP ================= */
@@ -834,4 +980,17 @@ section{
 
 .dark-theme .road-line::after{
     color:#FFD700;
+}
+/* ================= SKILLS RESPONSIVE ================= */
+
+@media (max-width:800px){
+
+    .skills-block, .skills-block.reverse{
+        flex-direction:column;
+    }
+
+    .skills-visual{
+        max-width:220px;
+    }
+
 }
