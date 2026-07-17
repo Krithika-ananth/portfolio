@@ -49,7 +49,13 @@ nav a:hover{
     font-weight:bold;
 }
 
-/* ================= THEME BUTTON ================= */
+/* ================= NAV RIGHT / THEME BUTTON ================= */
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
 
 #theme-toggle{
     border:none;
@@ -57,6 +63,35 @@ nav a:hover{
     font-size:22px;
     cursor:pointer;
     color:#021960;
+}
+
+/* HAMBURGER (hidden on laptop/desktop by default) */
+
+#hamburger-btn{
+    display:none;
+    border:none;
+    background:none;
+    font-size:24px;
+    cursor:pointer;
+    color:#021960;
+    z-index:1100;
+}
+
+/* MOBILE NAV OVERLAY (hidden by default) */
+
+#nav-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+    z-index:998;
+    opacity:0;
+    transition:opacity 0.35s;
+}
+
+#nav-overlay.show{
+    display:block;
+    opacity:1;
 }
 
 /* ================= HERO ================= */
@@ -391,6 +426,10 @@ section{
 }
 
 .dark-theme .logo{
+    color:#FFD700;
+}
+
+.dark-theme #hamburger-btn{
     color:#FFD700;
 }
 
@@ -981,16 +1020,482 @@ section{
 .dark-theme .road-line::after{
     color:#FFD700;
 }
-/* ================= SKILLS RESPONSIVE ================= */
+/* =====================================================
+   RESPONSIVE SYSTEM
+   Laptop (default, ~1025px+)  -> existing design, untouched
+   Large Screens (1600px+)     -> wide modern layout
+   Tablet (701px - 1024px)     -> two-column layout + hamburger
+   Mobile (max 700px)          -> hamburger + stacked layout
+   ===================================================== */
 
-@media (max-width:800px){
+
+/* =================================================
+   LARGE SCREENS (1600px and up) — wide modern layout
+   ================================================= */
+
+@media (min-width:1600px){
+
+    nav{
+        padding:24px 160px;
+    }
+
+    .logo{
+        font-size:28px;
+    }
+
+    nav ul{
+        gap:40px;
+    }
+
+    nav a{
+        font-size:17px;
+    }
+
+    section{
+        padding:130px 160px;
+    }
+
+    .section-title{
+        font-size:46px;
+        margin-bottom:70px;
+    }
+
+    /* HERO */
+
+    .hero{
+        gap:220px;
+        padding:100px 160px;
+    }
+
+    .hero-text h1{
+        font-size:64px;
+    }
+
+    .hero-text .highlight-name{
+        font-size:82px;
+    }
+
+    .hero-text h2{
+        font-size:36px;
+    }
+
+    .hero-image img{
+        width:420px;
+        height:420px;
+    }
+
+    /* ABOUT */
+
+    .about-container{
+        max-width:1500px;
+        margin:0 auto;
+        gap:100px;
+    }
+
+    .about-text{
+        font-size:19px;
+    }
+
+    .about-image img{
+        width:420px;
+    }
+
+    /* EDUCATION */
+
+    .roadmap{
+        gap:50px;
+        max-width:1500px;
+        margin:60px auto 0;
+    }
+
+    .road-item{
+        width:320px;
+        padding:32px;
+    }
+
+    /* PROJECTS */
+
+    .mindmap{
+        gap:110px;
+        max-width:1500px;
+        margin:0 auto;
+    }
+
+    .project-node img{
+        width:210px;
+        height:210px;
+    }
+
+    /* SKILLS */
+
+    .skills-block{
+        max-width:1350px;
+        gap:90px;
+    }
+
+    .skills-visual{
+        max-width:320px;
+    }
+
+    /* CONTACT */
+
+    .contact-links{
+        max-width:1200px;
+        margin:0 auto;
+        gap:35px;
+    }
+
+}
+
+
+/* =================================================
+   TABLET & MOBILE SHARED (1024px and below)
+   Hamburger navigation
+   ================================================= */
+
+@media (max-width:1024px){
+
+    nav{
+        padding:16px 30px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    #hamburger-btn{
+        display:block;
+    }
+
+    #nav-links{
+        position:fixed;
+        top:0;
+        right:-100%;
+        height:100vh;
+        width:min(320px, 80vw);
+
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:26px;
+
+        background:white;
+        padding:110px 40px 40px;
+        box-shadow:-8px 0 30px rgba(0,0,0,0.15);
+
+        transition:right 0.4s ease;
+        z-index:1000;
+    }
+
+    #nav-links.show{
+        right:0;
+    }
+
+    #nav-links li{
+        width:100%;
+    }
+
+    #nav-links a{
+        font-size:18px;
+    }
+
+    .dark-theme #nav-links{
+        background:#0d0d0d;
+        box-shadow:-8px 0 30px rgba(255,215,0,0.1);
+    }
+
+}
+
+
+/* =================================================
+   TABLET (701px - 1024px) — two-column layout
+   ================================================= */
+
+@media (max-width:1024px) and (min-width:701px){
+
+    section{
+        padding:80px 40px;
+    }
+
+    .section-title{
+        font-size:34px;
+        margin-bottom:45px;
+    }
+
+    /* HERO — keep as two columns, just tighter */
+
+    .hero{
+        gap:60px;
+        padding:60px 40px;
+        height:auto;
+        min-height:90vh;
+    }
+
+    .hero-text h1{
+        font-size:42px;
+    }
+
+    .hero-text .highlight-name{
+        font-size:52px;
+    }
+
+    .hero-text h2{
+        font-size:24px;
+    }
+
+    .hero-bottom{
+        position:static;
+        margin-top:30px;
+    }
+
+    .hero-image img{
+        width:260px;
+        height:260px;
+    }
+
+    /* ABOUT — two columns, tighter gap */
+
+    .about-container{
+        gap:40px;
+    }
+
+    .about-text{
+        font-size:16px;
+    }
+
+    .about-image img{
+        width:280px;
+    }
+
+    /* EDUCATION — two per row */
+
+    .roadmap{
+        gap:30px;
+    }
+
+    .road-item{
+        width:calc(50% - 15px);
+        min-width:240px;
+    }
+
+    /* PROJECTS — two/three per row via wrap */
+
+    .mindmap{
+        gap:45px;
+    }
+
+    .project-node img{
+        width:150px;
+        height:150px;
+    }
+
+    /* SKILLS — text + visual side by side (two columns) */
 
     .skills-block, .skills-block.reverse{
-        flex-direction:column;
+        gap:35px;
     }
 
     .skills-visual{
         max-width:220px;
+    }
+
+    /* ACHIEVEMENT SLIDES */
+
+    .slides img{
+        width:250px;
+    }
+
+}
+
+
+/* =================================================
+   MOBILE (700px and below) — stacked single-column
+   ================================================= */
+
+@media (max-width:700px){
+
+    section{
+        padding:60px 20px;
+    }
+
+    .section-title{
+        font-size:28px;
+        margin-bottom:35px;
+    }
+
+    /* NAVBAR */
+
+    nav{
+        padding:14px 18px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    /* HERO — stacked, image on top */
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        height:auto;
+        padding:100px 20px 60px;
+        gap:30px;
+    }
+
+    .hero-image{
+        order:-1;
+    }
+
+    .hero-image img{
+        width:200px;
+        height:200px;
+    }
+
+    .hero-text h1{
+        font-size:34px;
+    }
+
+    .hero-text .highlight-name{
+        font-size:42px;
+    }
+
+    .hero-text h2{
+        font-size:20px;
+    }
+
+    .hero-bottom{
+        position:static;
+        left:0;
+        margin-top:25px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:20px;
+    }
+
+    .buttons{
+        margin-top:0;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:12px;
+    }
+
+    .btn{
+        margin-right:0;
+    }
+
+    .social-icons{
+        margin-top:0;
+    }
+
+    .social-icons a{
+        margin:0 10px;
+    }
+
+    /* ABOUT — stacked */
+
+    .about-container{
+        flex-direction:column;
+        text-align:center;
+        gap:30px;
+    }
+
+    .about-image{
+        order:-1;
+    }
+
+    .about-image img{
+        width:220px;
+    }
+
+    .about-text{
+        font-size:15px;
+        line-height:1.8;
+    }
+
+    /* EDUCATION — single column */
+
+    .roadmap{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .road-item{
+        width:100%;
+        max-width:320px;
+    }
+
+    .road-line{
+        transform:rotate(90deg);
+        margin:10px 0;
+    }
+
+    /* PROJECTS — single column */
+
+    .mindmap{
+        gap:35px;
+    }
+
+    .project-node img{
+        width:130px;
+        height:130px;
+    }
+
+    /* ACHIEVEMENTS */
+
+    .year-block{
+        margin-bottom:45px;
+    }
+
+    .slider{
+        width:100%;
+    }
+
+    .slides img{
+        width:180px;
+    }
+
+    /* SKILLS — fully stacked */
+
+    .skills-block, .skills-block.reverse{
+        flex-direction:column;
+        text-align:center;
+        gap:25px;
+    }
+
+    .skills-text{
+        width:100%;
+    }
+
+    .skills-desc{
+        max-width:100%;
+    }
+
+    .skill-bar-label{
+        justify-content:center;
+    }
+
+    .skills-visual{
+        max-width:220px;
+        margin:0 auto;
+    }
+
+    /* CONTACT — stacked cards */
+
+    .contact-links{
+        flex-direction:column;
+        align-items:center;
+        gap:16px;
+    }
+
+    .contact-card{
+        width:100%;
+        max-width:320px;
+        justify-content:center;
+        padding:16px 22px;
+        font-size:14px;
     }
 
 }
