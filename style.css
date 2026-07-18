@@ -999,6 +999,68 @@ section{
     grid-column:span 2;
 }
 
+/* LANGUAGE & HOBBY TAGS */
+
+.tag-group{
+    margin-bottom:26px;
+}
+
+.tag-group:last-child{
+    margin-bottom:0;
+}
+
+.tag-group-label{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color:#021960;
+    opacity:0.7;
+    margin-bottom:12px;
+}
+
+.tag-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.skill-tag{
+    display:inline-block;
+    padding:9px 18px;
+    font-size:14px;
+    font-weight:600;
+    color:#021960;
+    background:rgba(2,25,96,0.08);
+    border:1px solid rgba(2,25,96,0.15);
+    border-radius:30px;
+    transition:0.3s;
+}
+
+.skill-tag:hover{
+    background:#021960;
+    color:#fff;
+    transform:translateY(-3px);
+}
+
+/* DARK THEME */
+
+.dark-theme .tag-group-label{
+    color:#FFD700;
+}
+
+.dark-theme .skill-tag{
+    color:#FFD700;
+    background:rgba(255,215,0,0.1);
+    border:1px solid rgba(255,215,0,0.25);
+}
+
+.dark-theme .skill-tag:hover{
+    background:#FFD700;
+    color:#111;
+}
+
 /* DARK THEME */
 
 .dark-theme .skills-subtitle{
