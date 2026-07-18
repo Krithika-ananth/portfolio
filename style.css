@@ -9,6 +9,87 @@ html{
     scroll-behavior:smooth;
 }
 
+/* =====================================================
+   SCROLL MOTION — professional fade/slide reveal
+   (placed early so later :hover rules win cascade ties)
+   ===================================================== */
+
+.reveal{
+    opacity:0;
+    transform:translateY(45px);
+    transition:opacity 0.8s cubic-bezier(0.22,1,0.36,1),
+               transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    will-change:opacity, transform;
+}
+
+.reveal.in-view{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* subtle side-slide for two-column blocks */
+
+.hero-heading.reveal{
+    transform:translateX(-40px);
+}
+
+.hero-image.reveal{
+    transform:translateX(40px);
+}
+
+.about-text.reveal{
+    transform:translateX(-40px);
+}
+
+.about-image.reveal{
+    transform:translateX(40px);
+}
+
+.hero-heading.reveal.in-view,
+.hero-image.reveal.in-view,
+.about-text.reveal.in-view,
+.about-image.reveal.in-view{
+    transform:translateX(0);
+}
+
+.hero-bottom.reveal{
+    transition-delay:0.2s;
+}
+
+/* staggered delays for grouped/repeating cards */
+
+.road-item.reveal:nth-child(1){ transition-delay:0s; }
+.road-item.reveal:nth-child(3){ transition-delay:0.12s; }
+.road-item.reveal:nth-child(5){ transition-delay:0.24s; }
+
+.milestone-card.reveal:nth-child(1){ transition-delay:0s; }
+.milestone-card.reveal:nth-child(2){ transition-delay:0.1s; }
+.milestone-card.reveal:nth-child(3){ transition-delay:0.2s; }
+.milestone-card.reveal:nth-child(4){ transition-delay:0.3s; }
+
+.project-node.reveal:nth-child(1){ transition-delay:0s; }
+.project-node.reveal:nth-child(2){ transition-delay:0.1s; }
+.project-node.reveal:nth-child(3){ transition-delay:0.2s; }
+.project-node.reveal:nth-child(4){ transition-delay:0.3s; }
+.project-node.reveal:nth-child(5){ transition-delay:0.4s; }
+
+.contact-card.reveal:nth-child(1){ transition-delay:0s; }
+.contact-card.reveal:nth-child(2){ transition-delay:0.1s; }
+.contact-card.reveal:nth-child(3){ transition-delay:0.2s; }
+.contact-card.reveal:nth-child(4){ transition-delay:0.3s; }
+
+/* respect users who prefer less motion */
+
+@media (prefers-reduced-motion: reduce){
+
+    .reveal{
+        opacity:1;
+        transform:none;
+        transition:none;
+    }
+
+}
+
 body{
     background:#f5f7fa;
     transition:0.5s;
@@ -298,6 +379,84 @@ section{
     width:350px;
     border-radius:20px;
     box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* ================= ACADEMIC MILESTONES ================= */
+
+.milestones-section{
+    text-align:center;
+}
+
+.milestones-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:35px;
+    max-width:1100px;
+    margin:0 auto;
+}
+
+.milestone-card{
+    width:230px;
+    padding:34px 24px;
+    background:white;
+    border-radius:20px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    transition:0.4s;
+}
+
+.milestone-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(2,25,96,0.15);
+}
+
+.milestone-exam{
+    font-size:17px;
+    font-weight:700;
+    letter-spacing:0.3px;
+    color:#021960;
+    margin-bottom:16px;
+    padding-bottom:14px;
+    border-bottom:2px solid rgba(2,25,96,0.1);
+}
+
+.milestone-detail{
+    font-size:20px;
+    font-weight:700;
+    color:#111;
+    margin-bottom:6px;
+}
+
+.milestone-sub{
+    font-size:13px;
+    font-weight:600;
+    color:#5a6b9c;
+}
+
+/* DARK THEME */
+
+.dark-theme .milestone-card{
+    background:#111;
+    border:1px solid rgba(255,215,0,0.2);
+    box-shadow:0 0 20px rgba(255,215,0,0.1);
+}
+
+.dark-theme .milestone-card:hover{
+    box-shadow:0 0 30px rgba(255,215,0,0.25);
+}
+
+.dark-theme .milestone-exam{
+    color:#FFD700;
+    border-bottom:2px solid rgba(255,215,0,0.2);
+}
+
+.dark-theme .milestone-detail{
+    color:#f5e6b3;
+}
+
+.dark-theme .milestone-sub{
+    color:#d8b65c;
 }
 
 /* ================= PROJECTS ================= */
@@ -930,6 +1089,8 @@ section{
     margin-bottom:20px;
 }
 
+
+
 /* TEXT */
 
 .road-item h3{
@@ -1008,6 +1169,8 @@ section{
 
     box-shadow:0 0 20px rgba(255,215,0,0.3);
 }
+
+
 
 .dark-theme .road-line{
     background:linear-gradient(
